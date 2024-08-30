@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Message board</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <h1><% title %></h1>
+        <% for (let i = messages.length -1; i >= 0; i--) { %>
+            <div class="message">
+              <div class="message-header">
+                <p class="username"> <%= messages[i].user %> </p> <p class="date"> <%= messages[i].added.getDate() + '-' + (messages[i].added.getMonth()+1) + '-' + messages[i].added.getFullYear() %> </p>
+              </div>
+              <p class="message-body"> <%= messages[i].text %> </p>
+              <a href="/message/<%= messages[i].id %>" class="view-message">view message</a>
+            </div>
+          <% } %>
+          <button onclick="changeNew()">New Messages</button>
+    </body>
+    <script>
+        const changeNew = () => {
+            window.location.href += 'new';
+        }
+    </script>
+</html>
